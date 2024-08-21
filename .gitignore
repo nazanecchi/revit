@@ -1,7 +1,7 @@
 __pycache__/
 node_modules/
 public/
-front/public
+front/public/
 back/objectData.txt
 back/python/__pycache__/
-back/__pycache__
+back/__pycache__/
