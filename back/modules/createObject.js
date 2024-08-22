@@ -3,11 +3,10 @@ const { exec } = require('child_process');
 const path = require('path');
 
 async function createObject(req, res) {
-  const { altura, ancho, largo } = req.body;
-  console.log(`Altura: ${altura}, Ancho: ${ancho}, Largo: ${largo}`);
+  const { height, width, length, roofheight } = req.body;
 
   // Guarda los datos en un archivo
-  fs.writeFileSync('objectData.txt', `Altura: ${altura}\nAncho: ${ancho}\nLargo: ${largo}`);
+  fs.writeFileSync('objectData.txt', `height: ${height}\nwidth: ${width}\nlength: ${length}\nrooflheight: ${roofheight}`);
 
   // Define el directorio en el que se ejecutará el script Python
   const pythonDir = path.resolve(__dirname, '../python');
@@ -22,7 +21,9 @@ async function createObject(req, res) {
   let responseSent = false;
 
   // Envía los datos al script Python
-  pythonProcess.stdin.write(JSON.stringify({ altura, ancho, largo }));
+  const a = JSON.stringify({ height, width, length, roofheight })
+  pythonProcess.stdin.write(a);
+  console.log("enviamos: " + a)
   pythonProcess.stdin.end();
 
   // Maneja la salida del script Python

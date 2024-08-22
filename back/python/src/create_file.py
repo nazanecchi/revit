@@ -1,5 +1,4 @@
 import FreeCAD
-import Part
 import Mesh
 import os
 
@@ -31,7 +30,7 @@ def make_file(doc, directorio):
 
             # Exportar el documento a STL
             # Convertir el objeto a malla
-            shape = doc.getObject("MiCubo").Shape
+            shape = doc.getObject("Galpon").Shape
             mesh = Mesh.Mesh(shape.tessellate(0.1))
 
             # Guardar el archivo STL

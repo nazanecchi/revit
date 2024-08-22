@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
-  const [altura, setAltura] = useState('');
-  const [ancho, setAncho] = useState('');
-  const [largo, setLargo] = useState('');
+  const [height, setHeight] = useState('');
+  const [width, setWidth] = useState('');
+  const [length, setLength] = useState('');
+  const [roofheight, setRoofheight] = useState('');
   const navigate = useNavigate(); // Hook para la navegación
 
   const handleSubmit = async (event) => {
@@ -16,7 +17,7 @@ const Home = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ altura, ancho, largo }),
+        body: JSON.stringify({ height, width, length, roofheight }),
       });
       const result = await response.json();
       console.log(result.message);
@@ -36,20 +37,26 @@ const Home = () => {
         <input
           type="number"
           placeholder="Altura"
-          value={altura}
-          onChange={(e) => setAltura(e.target.value)}
+          value={height}
+          onChange={(e) => setHeight(e.target.value)}
         />
         <input
           type="number"
           placeholder="Ancho"
-          value={ancho}
-          onChange={(e) => setAncho(e.target.value)}
+          value={width}
+          onChange={(e) => setWidth(e.target.value)}
         />
         <input
           type="number"
           placeholder="Largo"
-          value={largo}
-          onChange={(e) => setLargo(e.target.value)}
+          value={length}
+          onChange={(e) => setLength(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Altura Techo"
+          value={roofheight}
+          onChange={(e) => setRoofheight(e.target.value)}
         />
         <button type="submit">Enviar</button>
       </form>
